@@ -3,15 +3,9 @@ import img from "../images/img.png";
 import img1 from "../images/img1.png";
 import img2 from "../images/img2.png";
 import img3 from "../images/img3.jpg";
-import { Modal } from "bootstrap";
-import React from "react";
-import { ModalBody, ModalFooter, ModalHeader, ModalTitle } from "react-bootstrap";
+import { Modal} from "react-bootstrap";
 
 const About = () => {
-  const [open, setOpen] = React.useState(false);
-  const postComment = () => {
-    setOpen(true);
-  };
 
   return (
     <div className="aboutContainer">
@@ -51,17 +45,17 @@ const About = () => {
             <p>Genre</p>
             <p id="genre">Action, Thriller, Porn </p>
           </div>
-          <button className="postC" onClick={postComment()}>
+          <button className="postC" >
             Post Comment
           </button>
         </div>
       </div>
 
-      <Modal open={open}>
-        <ModalHeader>
-          <ModalTitle>post Comment</ModalTitle>
-        </ModalHeader>
-        <ModalBody>
+      <Modal>
+        <Modal.Header>
+          <Modal.Title>post Comment</Modal.Title>
+        </Modal.Header>
+        <Modal.Body>
           <div className="form">
             <h2 id="h2">Post Comment</h2>
             <form>
@@ -76,10 +70,7 @@ const About = () => {
               <input type="submit" id="submit" />
             </form>
           </div>
-        </ModalBody>
-        <ModalFooter>
-          
-        </ModalFooter>
+        </Modal.Body>
       </Modal>
       <div className="other">
         <h3>Other Movies Suggestion</h3>
