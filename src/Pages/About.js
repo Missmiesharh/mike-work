@@ -2,7 +2,7 @@ import { useState } from "react";
 
 import Navbar from "./Navbar";
 import PostCommentModal from "../components/modals/PostCommentModal";
-
+import ConfirmationModal from "../components/modals/ConfirmationModal";
 import img from "../images/img.png";
 import img1 from "../images/img1.png";
 import img2 from "../images/img2.png";
@@ -10,15 +10,29 @@ import img3 from "../images/img3.jpg";
 
 const About = () => {
   const [renderModalStatus, setRenderModalStatus] = useState(false);
+  
+  const [renderConfirmationStatus, setrenderConfirmationStatus] = useState(false);
+
   const addComment = () => setRenderModalStatus(true);
+  const onConfirm = () => {
+    setRenderModalStatus(false)
+    setrenderConfirmationStatus(true)
+  };
+  
 
   const postCommentRender = renderModalStatus ? (
-    <PostCommentModal onchange={() => setRenderModalStatus(false)} />
-  ) : null;
+    <PostCommentModal onchange={() => setRenderModalStatus(false)} onConfirm={onConfirm}/> ) : null;
 
+
+    
+  const postConfirmReader= renderConfirmationStatus ? <ConfirmationModal closeModal={() => setrenderConfirmationStatus(false) } /> : null ;
+
+
+  
   return (
     <div className="aboutContainer">
-      
+       {postCommentRender}
+       {postConfirmReader}
       <div className="about">
         <Navbar />
         <div className="section1">
@@ -70,7 +84,7 @@ const About = () => {
           <img src={img3} alt="fear" />
         </div>
       </div>
-      {postCommentRender}
+     
     </div>
   );
 };

@@ -1,8 +1,20 @@
+import { useState } from "react";
 import { Link } from "react-router-dom";
+import CreateMovieModal from "../components/modals/CreateMovieModal";
 
 const CreateM = () => {
+  const [yay, setyay] = useState(false);
+  const changed = () => {
+    setyay(true);
+  };
+
+  const openModal = yay ? (
+    <CreateMovieModal onOpen={() => setyay(false)} />
+  ) : null;
+
   return (
     <div className="createContainer">
+      {openModal}
       <div className="navbar">
         <div className="coll">
           <Link to="/Home" className="home">
@@ -23,9 +35,9 @@ const CreateM = () => {
         <button className="login">LOGOUT</button>
       </div>
 
-      <div className="formC"> 
-      <div id="textC">Create Movies</div>
-        <form id="createForm">   
+      <div className="formC">
+        <div id="textC">Create Movies</div>
+        <form id="createForm">
           <div className="col">
             <div id="col2">
               <label>Name of the Movie</label>
@@ -66,11 +78,11 @@ const CreateM = () => {
               <input type="file" />
             </div>
             <br />
-            <input type="submit" id="submit" />
+            <button onClick={changed}>
+             Submit
+            </button>
           </div>
-         
-      </form>
-       
+        </form>
       </div>
     </div>
   );

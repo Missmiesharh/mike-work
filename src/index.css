@@ -450,3 +450,13 @@ label {
  
   
 }
+#text{
+  color: #000000;
+}
+
+
+.bi-check-circle-fill{
+  height:1rem;
+font-size: 3.85em;
+  color: #a90909;
+}

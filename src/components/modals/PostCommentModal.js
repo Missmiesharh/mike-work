@@ -1,8 +1,8 @@
 import { useState } from "react";
 import Modal from "react-bootstrap/Modal";
-// import ConfirmationModal from "./ConfirmationModal";
 
-const PostCommentModal = ({ onchange }) => {
+
+const PostCommentModal = ({ onchange, onConfirm }) => {
   const [show, setShow] = useState(true);
 
   const handleClose = () => {
@@ -10,12 +10,18 @@ const PostCommentModal = ({ onchange }) => {
     onchange();
   };
 
+  const confirm = () => {
+    setShow(false);
+    onConfirm();
+  };
+
+  
  
 
   return (
     <div className="cform">
-      <div className="form">
-       
+
+      <div className="form">       
         <Modal show={show} backdrop="static" centered keyboard={false}>
           <Modal.Body>
             <div className="form2">
@@ -34,7 +40,7 @@ const PostCommentModal = ({ onchange }) => {
                   name="lname"
                 ></textarea>
                 <br />
-                <input type="submit" id="submit"   />
+                <input type="submit" id="submit"  onClick={confirm} />
               </form>
             </div>
           </Modal.Body>
